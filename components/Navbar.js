@@ -30,7 +30,7 @@ export default function Navbar() {
     <nav aria-label="Main navigation" className="bg-[#AE75DA] text-white sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" aria-label="Paddu's Glam Haven — Home" className="flex flex-col">
+          <Link href="/" aria-label="Paddu's Glam Haven — Home" className="flex flex-col text-[#FFF19B]">
             <span className="font-script text-2xl leading-tight">Paddu&apos;s</span>
             <span className="text-[8px] tracking-[0.25em] uppercase -mt-1 opacity-80">
               Glam Haven
