@@ -21,7 +21,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-flex flex-col">
               <span className="font-script text-3xl text-brand-purple leading-tight">
-                Prerna
+                Paddu's
               </span>
               <span className="text-[9px] tracking-[0.2em] uppercase text-gray-400 -mt-0.5">
                 Makeup Studio
