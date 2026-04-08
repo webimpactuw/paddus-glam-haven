@@ -23,8 +23,8 @@ export default function Footer() {
               <span className="font-script text-3xl text-brand-purple leading-tight">
                 Paddu's
               </span>
-              <span className="text-[9px] tracking-[0.2em] uppercase text-gray-400 -mt-0.5">
-                Makeup Studio
+              <span className="text-[9px] tracking-[0.2em] uppercase text-brand-purple -mt-0.5">
+                Glam Haven
               </span>
             </Link>
             <div className="flex gap-2 mt-4">
@@ -81,7 +81,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-gray-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-400">
-          <p>&copy;{new Date().getFullYear()} Prerna&apos;s Makeup Studio. All rights reserved</p>
+          <p>&copy;2022 Paddu&apos;s Glam Haven. All rights reserved</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-brand-purple transition-colors">Privacy &amp; Policy</Link>
             <Link href="#" className="hover:text-brand-purple transition-colors">Terms &amp; Condition</Link>

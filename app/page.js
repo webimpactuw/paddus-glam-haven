@@ -132,12 +132,12 @@ export default async function Home() {
           <div className="text-center md:text-left flex-1">
             <h2
               id="book-heading"
-              className="font-script text-4xl md:text-5xl text-brand-gold"
+              className="font-script text-4xl md:text-5xl font-serif font-semibold text-brand-purple"
             >
               Book your Look
             </h2>
-            <p className="mt-4 text-gray-400 uppercase text-sm tracking-wide max-w-xl">
-              Schedule your session today and let us create your perfect look.
+            <p className="mt-4 text-brand-purple text-sm font-Montserrat tracking-wide max-w-xl">
+              Schedule a consultation to get your personalized look that feels like you
             </p>
             <Link
               href="/booking"
