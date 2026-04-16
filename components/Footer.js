@@ -14,16 +14,16 @@ function SocialIcon({ children, label }) {
 
 export default function Footer() {
   return (
-    <footer aria-label="Site footer" className="bg-gray-50 border-t border-gray-100">
+    <footer aria-label="Site footer" className="bg-[#AE75DA]/40 text-brand-purple">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-12 pb-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           {/* Logo & Socials */}
           <div>
             <Link href="/" className="inline-flex flex-col">
-              <span className="font-script text-3xl text-brand-purple leading-tight">
+              <span className="font-script text-4xl text-brand-purple leading-tight">
                 Paddu's
               </span>
-              <span className="text-[9px] tracking-[0.2em] uppercase text-brand-purple -mt-0.5">
+              <span className="text-[11px] tracking-[0.2em] uppercase text-brand-purple -mt-0.5">
                 Glam Haven
               </span>
             </Link>

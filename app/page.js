@@ -18,6 +18,7 @@ export default async function Home() {
             <div>
               <h1
                 id="hero-heading"
+                style={{ fontFamily: '"Playfair Display", serif' }}
                 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] tracking-tight text-brand-purple"
               >
                 {content.hero.heading.split("PERFECTED!")[0]}
@@ -54,11 +55,12 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2
             id="services-heading"
-            className="font-script text-4xl md:text-5xl text-brand-gold text-center"
+            style={{ fontFamily: '"Playfair Display", serif' }}
+            className="text-4xl md:text-5xl text-brand-purple font-semibold text-center"
           >
             Services
           </h2>
-          <p className="text-center text-gray-400 text-sm tracking-wide mt-3 uppercase">
+          <p className="text-center text-brand-purple text-sm tracking-wide mt-3">
             Expert services for every stunning look you desire.
           </p>
 
@@ -75,8 +77,8 @@ export default async function Home() {
                 aria-selected={i === 0}
                 className={`text-sm font-medium pb-2 border-b-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-purple ${
                   i === 0
-                    ? "border-brand-purple text-brand-purple"
-                    : "border-transparent text-gray-400 hover:text-gray-600"
+                    ? "border-b-2 border-brand-purple text-brand-purple"
+                    : "border-b border-brand-gold-soft/70 text-brand-purple/50 hover:text-brand-purple"
                 }`}
               >
                 {tab}
@@ -132,7 +134,8 @@ export default async function Home() {
           <div className="text-center md:text-left flex-1">
             <h2
               id="book-heading"
-              className="font-script text-4xl md:text-5xl font-serif font-semibold text-brand-purple"
+              style={{ fontFamily: '"Playfair Display", serif' }}
+              className="text-4xl md:text-5xl font-serif font-semibold text-brand-purple"
             >
               Book your Look
             </h2>
@@ -171,7 +174,8 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <h2
             id="contact-heading"
-            className="font-script text-4xl md:text-5xl text-brand-gold text-center"
+            style={{ fontFamily: '"Playfair Display", serif' }}
+            className="text-4xl md:text-5xl font-semibold text-brand-purple text-center"
           >
             Contact
           </h2>
@@ -315,7 +319,8 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2
             id="testimonials-heading"
-            className="text-2xl md:text-3xl font-bold text-center"
+            style={{ fontFamily: '"Playfair Display", serif' }}
+            className="text-2xl md:text-3xl text-brand-purple text-center"
           >
             Trusted By Many Satisfied Customers
           </h2>
