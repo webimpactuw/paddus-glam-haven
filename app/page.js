@@ -68,18 +68,17 @@ export default async function Home() {
           <div
             role="tablist"
             aria-label="Service categories"
-            className="flex justify-center gap-8 mt-10 mb-12"
+            className="flex justify-center gap-15 mt-10 mb-12"
           >
             {content.serviceCategories.map((tab, i) => (
               <button
                 key={tab}
                 role="tab"
                 aria-selected={i === 0}
-                className={`text-sm font-medium pb-2 border-b-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-purple ${
-                  i === 0
-                    ? "border-b-2 border-brand-purple text-brand-purple"
-                    : "border-b border-brand-gold-soft/70 text-brand-purple/50 hover:text-brand-purple"
-                }`}
+                className={`text-sm font-medium pb-2 border-b-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-purple ${i === 0
+                  ? "border-b-2 border-brand-purple text-brand-purple"
+                  : "border-b border-brand-gold-soft/70 text-brand-purple/50 hover:text-brand-purple"
+                  }`}
               >
                 {tab}
               </button>
@@ -91,8 +90,12 @@ export default async function Home() {
             {content.services.map((service) => (
               <div
                 key={service._key}
-                className="bg-brand-card/60 rounded-2xl p-5 flex flex-col items-center text-center"
+                className="bg-[#C47BE466]/80 rounded-xl p-5 flex flex-col"
               >
+                <h3 className="mb-4 font-semibold text-brand-purple">
+                  {service.name}
+                </h3>
+
                 <SanityImage
                   image={service.image}
                   alt={`${service.name} service`}
@@ -100,15 +103,15 @@ export default async function Home() {
                   height={400}
                   className="w-full rounded-xl"
                 />
-                <h3 className="mt-4 font-semibold text-gray-800">
-                  {service.name}
-                </h3>
-                <p className="text-brand-purple font-bold mt-1">
-                  {service.price}
-                </p>
-                <button className="mt-3 text-xs text-brand-purple border border-brand-purple rounded-full px-5 py-1.5 hover:bg-brand-purple hover:text-white transition-colors">
-                  view more
-                </button>
+
+                <div className="flex justify-between items-center mt-4">
+                  <p className="text-brand-purple font-bold">
+                    {service.price}
+                  </p>
+                  <button className="text-xs text-brand-purple bg-white font-semibold rounded-xl px-5 py-2 hover:bg-brand-purple hover:text-white transition-colors">
+                    Learn More
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -148,6 +151,59 @@ export default async function Home() {
             >
               Book Now
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Features (purple bg) ── */}
+      <section aria-label="Additional services" className="py-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-brand-purple-dark rounded-xl p-8 text-white">
+            <div className="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold">1 on 1 Makeup Lessons</h3>
+            <p className="mt-3 text-white/70 text-sm leading-relaxed">
+              Learn professional techniques with personalized one-on-one
+              sessions tailored to your skill level and style goals.
+            </p>
+          </div>
+
+          <div className="bg-brand-purple-dark/80 rounded-2xl p-8 text-white">
+            <div className="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold">Event</h3>
+            <p className="mt-3 text-white/70 text-sm leading-relaxed">
+              Group bookings and event makeup services for weddings, parties,
+              and corporate events. We bring the studio to you.
+            </p>
           </div>
         </div>
       </section>
@@ -249,64 +305,11 @@ export default async function Home() {
               </div>
               <button
                 type="submit"
-                className="bg-brand-purple text-white font-semibold px-8 py-3 rounded-lg hover:brightness-110 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-purple"
+                className="bg-brand-purple-dark text-white font-semibold px-8 py-3 rounded-lg hover:brightness-110 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-purple"
               >
-                Send Message
+                Book a Consultation
               </button>
             </form>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Features (purple bg) ── */}
-      <section aria-label="Additional services" className="bg-brand-purple py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-brand-purple-dark/80 rounded-2xl p-8 text-white">
-            <div className="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mb-5">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold">1 on 1 Makeup Lessons</h3>
-            <p className="mt-3 text-white/70 text-sm leading-relaxed">
-              Learn professional techniques with personalized one-on-one
-              sessions tailored to your skill level and style goals.
-            </p>
-          </div>
-
-          <div className="bg-brand-purple-dark/80 rounded-2xl p-8 text-white">
-            <div className="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mb-5">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold">Event</h3>
-            <p className="mt-3 text-white/70 text-sm leading-relaxed">
-              Group bookings and event makeup services for weddings, parties,
-              and corporate events. We bring the studio to you.
-            </p>
           </div>
         </div>
       </section>
@@ -320,7 +323,7 @@ export default async function Home() {
           <h2
             id="testimonials-heading"
             style={{ fontFamily: '"Playfair Display", serif' }}
-            className="text-2xl md:text-3xl text-brand-purple text-center"
+            className="text-4xl md:text-3xl text-brand-purple text-center font-semibold"
           >
             Trusted By Many Satisfied Customers
           </h2>
@@ -328,7 +331,7 @@ export default async function Home() {
             {content.testimonials.map((t) => (
               <div
                 key={t._key}
-                className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-[#C47BE466]/80 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <SanityImage
@@ -338,9 +341,13 @@ export default async function Home() {
                     height={40}
                     className="w-10 h-10 rounded-full shrink-0"
                   />
-                  <span className="font-semibold text-sm">{t.name}</span>
+                  <span 
+                    className="font-semibold text-brand-purple font-Montserrat"
+                    style={{ fontFamily: '"Playfair Display", serif' }}>
+                    {t.name}
+                  </span>
                 </div>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-brand-purple leading-relaxed font-Montserrat">
                   {t.text}
                 </p>
               </div>
