@@ -50,8 +50,8 @@ export default function Footer() {
 
           {/* About */}
           <div>
-            <h4 className="font-bold text-gray-900 mb-4">About</h4>
-            <ul className="space-y-2.5 text-sm text-gray-500">
+            <h4 className="font-bold text-brand-purple mb-4">About</h4>
+            <ul className="space-y-2.5 text-sm text-brand-purple">
               <li><Link href="/#services" className="hover:text-brand-purple transition-colors">Service</Link></li>
               <li><Link href="#" className="hover:text-brand-purple transition-colors">Course</Link></li>
               <li><Link href="#" className="hover:text-brand-purple transition-colors">Appointment</Link></li>
@@ -61,8 +61,8 @@ export default function Footer() {
 
           {/* Community */}
           <div>
-            <h4 className="font-bold text-gray-900 mb-4">Community</h4>
-            <ul className="space-y-2.5 text-sm text-gray-500">
+            <h4 className="font-bold text-brand-purple mb-4">Community</h4>
+            <ul className="space-y-2.5 text-sm text-brand-purple">
               <li><Link href="#" className="hover:text-brand-purple transition-colors">Events</Link></li>
               <li><Link href="#" className="hover:text-brand-purple transition-colors">Invite a friend</Link></li>
             </ul>
@@ -70,8 +70,8 @@ export default function Footer() {
 
           {/* Socials */}
           <div>
-            <h4 className="font-bold text-gray-900 mb-4">Socials</h4>
-            <ul className="space-y-2.5 text-sm text-gray-500">
+            <h4 className="font-bold text-brand-purple mb-4">Socials</h4>
+            <ul className="space-y-2.5 text-sm text-brand-purple">
               <li><Link href="#" className="hover:text-brand-purple transition-colors">Instagram</Link></li>
               <li><Link href="#" className="hover:text-brand-purple transition-colors">Twitter</Link></li>
               <li><Link href="#" className="hover:text-brand-purple transition-colors">Facebook</Link></li>
@@ -80,11 +80,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-gray-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-400">
+        <div className="border-t border-gray-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-brand-purple font-semibold">
           <p>&copy;2022 Paddu&apos;s Glam Haven. All rights reserved</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-brand-purple transition-colors">Privacy &amp; Policy</Link>
-            <Link href="#" className="hover:text-brand-purple transition-colors">Terms &amp; Condition</Link>
+            <Link href="#" className="hover:text-brand-purple transition-colors">Terms &amp; Conditions</Link>
           </div>
         </div>
       </div>

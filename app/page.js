@@ -19,17 +19,18 @@ export default async function Home() {
               <h1
                 id="hero-heading"
                 style={{ fontFamily: '"Playfair Display", serif' }}
-                className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] tracking-tight text-brand-purple"
+                className="text-4xl md:text-5xl lg:text-5.5xl font-serif leading-[1.1] tracking-tight text-brand-purple"
               >
-                {content.hero.heading.split("PERFECTED!")[0]}
+                {content.hero.heading.split("PERFECTED")[0]}
                 <span>PERFECTED</span>
               </h1>
+              <div className="w-90 h-px bg-brand-purple-dark/30 my-15"></div>
               <p className="mt-6 text-gray-500 text-lg leading-relaxed max-w-lg font-serif">
                 {content.hero.subheading}
               </p>
               <Link
                 href="/booking"
-                className="inline-block mt-8 px-8 py-3 bg-brand-gold text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold"
+                className="inline-block mt-12 px-15 py-4 border-2 border-brand-gold-soft text-brand-purple tracking-wide hover:bg-[#249E94] hover:border-[#249E94] hover:text-white transition-colors font-Montserrat rounded"
               >
                 {content.hero.ctaText}
               </Link>
@@ -147,7 +148,7 @@ export default async function Home() {
             </p>
             <Link
               href="/booking"
-              className="inline-block mt-8 px-10 py-3 border-2 border-gray-800 text-gray-800 font-semibold tracking-wide hover:bg-gray-800 hover:text-white transition-colors"
+              className="inline-block mt-8 px-15 py-4 border-2 border-brand-gold-soft text-brand-purple tracking-wide hover:bg-[#249E94] hover:border-[#249E94] hover:text-white transition-colors font-Montserrat rounded"
             >
               Book Now
             </Link>
@@ -231,13 +232,13 @@ export default async function Home() {
           <h2
             id="contact-heading"
             style={{ fontFamily: '"Playfair Display", serif' }}
-            className="text-4xl md:text-5xl font-semibold text-brand-purple text-center"
+            className="text-4xl md:text-5xl font-semibold text-brand-purple text-center pb-15"
           >
             Contact
           </h2>
-          <p className="text-center text-gray-400 text-sm tracking-wide mt-3 uppercase mb-14">
+          {/* <p className="text-center text-gray-400 text-sm tracking-wide mt-3 uppercase mb-14">
             Let us know your requirements and we&apos;ll get back to you.
-          </p>
+          </p> */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div className="bg-brand-purple-light rounded-3xl p-12 md:p-16 flex items-center justify-center aspect-square max-w-sm mx-auto w-full">
