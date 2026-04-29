@@ -66,7 +66,7 @@ export default async function About() {
                   </p>
 
                   {/* LIGHT PURPLE labels */}
-                  <p className="text-xs text-brand-purple-light uppercase tracking-wider mt-1">
+                  <p className="text-xs text-brand-purple uppercase tracking-wider mt-1">
                     {stat.label}
                   </p>
                 </div>
