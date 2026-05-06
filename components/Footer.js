@@ -5,7 +5,7 @@ function SocialIcon({ children, label }) {
     <a
       href="#"
       aria-label={label}
-      className="w-8 h-8 rounded-full bg-brand-purple text-white flex items-center justify-center text-xs hover:brightness-110 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      className="w-6 h-6 rounded-full bg-white text-brand-purple-dark flex items-center justify-center text-xs hover:brightness-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-purple-dark"
     >
       {children}
     </a>
@@ -52,10 +52,10 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-brand-purple mb-4">About</h4>
             <ul className="space-y-2.5 text-sm text-brand-purple">
-              <li><Link href="/#services" className="hover:text-brand-purple transition-colors">Service</Link></li>
-              <li><Link href="#" className="hover:text-brand-purple transition-colors">Course</Link></li>
-              <li><Link href="#" className="hover:text-brand-purple transition-colors">Appointment</Link></li>
-              <li><Link href="#" className="hover:text-brand-purple transition-colors">Business Relation</Link></li>
+              <li><Link href="/#services" className="hover:underline">Service</Link></li>
+              <li><Link href="#" className="hover:underline">Course</Link></li>
+              <li><Link href="#" className="hover:underline">Appointment</Link></li>
+              <li><Link href="#" className="hover:underline">Business Relation</Link></li>
             </ul>
           </div>
 
@@ -63,8 +63,8 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-brand-purple mb-4">Community</h4>
             <ul className="space-y-2.5 text-sm text-brand-purple">
-              <li><Link href="#" className="hover:text-brand-purple transition-colors">Events</Link></li>
-              <li><Link href="#" className="hover:text-brand-purple transition-colors">Invite a friend</Link></li>
+              <li><Link href="#" className="hover:underline">Events</Link></li>
+              <li><Link href="#" className="hover:underline">Invite a friend</Link></li>
             </ul>
           </div>
 
@@ -72,9 +72,9 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-brand-purple mb-4">Socials</h4>
             <ul className="space-y-2.5 text-sm text-brand-purple">
-              <li><Link href="#" className="hover:text-brand-purple transition-colors">Instagram</Link></li>
-              <li><Link href="#" className="hover:text-brand-purple transition-colors">Twitter</Link></li>
-              <li><Link href="#" className="hover:text-brand-purple transition-colors">Facebook</Link></li>
+              <li><Link href="#" className="hover:underline">Instagram</Link></li>
+              <li><Link href="#" className="hover:underline">Twitter</Link></li>
+              <li><Link href="#" className="hover:underline">Facebook</Link></li>
             </ul>
           </div>
         </div>
@@ -83,8 +83,8 @@ export default function Footer() {
         <div className="border-t border-gray-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-brand-purple font-semibold">
           <p>&copy;2022 Paddu&apos;s Glam Haven. All rights reserved</p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-brand-purple transition-colors">Privacy &amp; Policy</Link>
-            <Link href="#" className="hover:text-brand-purple transition-colors">Terms &amp; Conditions</Link>
+            <Link href="#" className="hover:underline">Privacy &amp; Policy</Link>
+            <Link href="#" className="hover:underline">Terms &amp; Conditions</Link>
           </div>
         </div>
       </div>
