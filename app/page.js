@@ -62,6 +62,8 @@ export default async function Home() {
             Expert services for every stunning look you desire.
           </p>
 
+
+
           {/* Tabs */}
           <div
             role="tablist"
