@@ -34,12 +34,12 @@ export default async function Home() {
             <div>
               <h1
                 id="hero-heading"
-                className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight"
+                className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] tracking-tight text-brand-purple"
               >
                 {content.hero.heading.split("PERFECTED!")[0]}
-                <span className="text-brand-purple">PERFECTED!</span>
+                <span>PERFECTED</span>
               </h1>
-              <p className="mt-6 text-gray-500 text-lg leading-relaxed max-w-lg">
+              <p className="mt-6 text-gray-500 text-lg leading-relaxed max-w-lg font-serif">
                 {content.hero.subheading}
               </p>
               <Link
@@ -77,6 +77,8 @@ export default async function Home() {
           <p className="text-center text-gray-400 text-sm tracking-wide mt-3 uppercase">
             Expert services for every stunning look you desire.
           </p>
+
+
 
           {/* Tabs */}
           <div
@@ -139,7 +141,7 @@ export default async function Home() {
         className="py-16 md:py-20 bg-white overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center gap-8 md:gap-16">
-          <div className="w-56 md:w-72 shrink-0" aria-hidden="true">
+          <div className="w-56 md:w-72 shrink-0 rotate-345 opacity-70" aria-hidden="true">
             <Image
               src="/images/orchid.png"
               alt=""
@@ -152,18 +154,18 @@ export default async function Home() {
           <div className="text-center md:text-left flex-1">
             <h2
               id="book-heading"
-              className="font-script text-4xl md:text-5xl text-brand-gold"
+              className="font-script text-4xl md:text-5xl font-serif font-semibold text-brand-purple"
             >
               Book your Look
             </h2>
-            <p className="mt-4 text-gray-400 uppercase text-sm tracking-wide max-w-xl">
-              Schedule your session today and let us create your perfect look.
+            <p className="mt-4 text-brand-purple text-sm font-Montserrat tracking-wide max-w-xl">
+              Schedule a consultation to get your personalized look that feels like you
             </p>
             <Link
               href="/booking"
               className="inline-block mt-8 px-10 py-3 border-2 border-gray-800 text-gray-800 font-semibold tracking-wide hover:bg-gray-800 hover:text-white transition-colors"
             >
-              BOOK NOW
+              Book Now
             </Link>
           </div>
         </div>
@@ -176,7 +178,7 @@ export default async function Home() {
         className="py-16 md:py-24 relative overflow-hidden"
       >
         <div
-          className="hidden md:block absolute right-0 top-1/2 -translate-y-1/3 opacity-25 pointer-events-none"
+          className="hidden md:block absolute right-0 top-1/2 -translate-y-1/3 opacity-80 pointer-events-none rotate-180"
           aria-hidden="true"
         >
           <Image
