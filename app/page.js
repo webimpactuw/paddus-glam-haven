@@ -2,9 +2,25 @@ import Link from "next/link";
 import Image from "next/image";
 import SanityImage from "@/components/SanityImage";
 import { getHomeContent } from "@/lib/content";
+import { client } from "@/sanity/lib/client";
+import ServicePostObj from "@/components/ServicePost";
+
+async function getServiceObj() {
+  const query = `*[_type == "service"] {
+    serviceName,
+    price,
+    image,
+    route,  
+  }`;
+  
+  const services = await client.fetch(query);
+  console.log("services: ", services);
+  return services;
+}
 
 export default async function Home() {
   const content = await getHomeContent();
+  const services = await getServiceObj();
 
   return (
     <main>
@@ -86,7 +102,7 @@ export default async function Home() {
 
           {/* Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {content.services.map((service) => (
+            {/*{content.services.map((service) => (
               <div
                 key={service._key}
                 className="bg-brand-card/60 rounded-2xl p-5 flex flex-col items-center text-center"
@@ -108,8 +124,12 @@ export default async function Home() {
                   view more
                 </button>
               </div>
+            ))}*/}
+            {services.map((service) => (
+              <ServicePostObj key={service.key} ServiceCard={service}/>
             ))}
           </div>
+          
         </div>
       </section>
 
