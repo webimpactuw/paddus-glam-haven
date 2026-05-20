@@ -8,39 +8,26 @@ export const metadata = {
 export default function BookingPage() {
   return (
     <main className="min-h-[70vh] py-16 md:py-24">
-      <section className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-        <h1 className="font-script text-5xl md:text-6xl text-brand-gold">
-          Booking
+      <section className="max-w-3xl mx-auto px-6 lg:px-8 text-center grid grid-cols-1 items-center">
+        <h1 className="font-serif text-4xl md:text-6xl text-brand-purple pt-[15vh] pb-[5vh]">
+          Ready to book your look?
         </h1>
-        <p className="mt-4 text-gray-500">
-          Thanks for your interest in booking with Paddu&apos;s Glam Haven.
-          This page is ready and we&apos;ll add full booking details soon.
+        <p className="text-brand-purple-light ">
+          Choose your service, pick a date, and book your beauty session in just a few clicks. <br /> It's fast and easy.
         </p>
 
-        <div className="mt-10 rounded-2xl border border-brand-card bg-white p-8 text-left shadow-sm">
-          <h2 className="text-2xl font-semibold text-gray-900">
-            Booking Request (Coming Soon)
-          </h2>
-          <p className="mt-3 text-gray-600">
-            We&apos;re preparing a full booking flow. For now, please use the
-            contact section and we&apos;ll follow up with availability and next
-            steps.
-          </p>
-
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/#contact"
-              className="inline-flex items-center justify-center rounded-lg bg-brand-purple px-6 py-3 font-semibold text-white hover:brightness-110 transition-all"
-            >
-              Go to Contact
-            </Link>
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
-            >
-              Back to Home
-            </Link>
-          </div>
+        <div className="w-full">
+          <form className="grid grid-cols-2 grid-rows-5 gap-x-[2vw] gap-y-[4vh] w-[80vw] relative right-[17vw]">
+            <p className="text-brand-purple-dark text-left row-start-1">
+              <b>Name (Required)</b>
+            </p>
+            <label className="text-brand-purple-light col-start-1 col-end-1 row-start-2 row-end-2 text-left">First Name</label>
+            <input type="text" className="border-b-[0.1vh] border-gray-400 outline-0 row-start-3 row-end-3 col-start-1 col-end-1" />
+            <label className="text-brand-purple-light col-start-2 col-end-2 row-start-2 row-end-2 text-left">Last Name</label>
+            <input type="text" className="border-b-[0.1vh] border-gray-400 outline-0 row-start-3 row-end-3" />
+            <label className="text-brand-purple-light text-left row-start-4 row-end-4">email</label>
+            <input type="text" className="border-b-[0.1vh] border-gray-400 outline-0 row-start-5 row-end-5 col-start-1 col-end-2 w-[80vw]" />
+          </form>
         </div>
       </section>
     </main>
