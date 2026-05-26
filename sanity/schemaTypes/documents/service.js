@@ -33,7 +33,7 @@ export default {
             name: "key",
             title: "ID (1-8)",
             type: "number",
-            validation: (Rule) => Rule.required()
-        }
-    ]
+            validation: (Rule) => Rule.required(),
+        },
+    ],
 }
