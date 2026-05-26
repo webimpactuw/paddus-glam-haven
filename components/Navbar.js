@@ -8,7 +8,6 @@ const mainLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/#contact", label: "Contact" },
-  { href: "/#services", label: "Pricing" },
 ];
 
 export default function Navbar() {
