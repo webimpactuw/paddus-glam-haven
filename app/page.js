@@ -18,17 +18,19 @@ export default async function Home() {
             <div>
               <h1
                 id="hero-heading"
-                className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] tracking-tight text-brand-purple"
+                style={{ fontFamily: '"Playfair Display", serif' }}
+                className="text-4xl md:text-5xl lg:text-5.5xl font-medium leading-[1.1] tracking-tight text-brand-purple"
               >
-                {content.hero.heading.split("PERFECTED!")[0]}
+                {content.hero.heading.split("PERFECTED")[0]}
                 <span>PERFECTED</span>
               </h1>
+              <div className="w-90 h-px bg-brand-purple-dark/30 my-15"></div>
               <p className="mt-6 text-gray-500 text-lg leading-relaxed max-w-lg font-serif">
                 {content.hero.subheading}
               </p>
               <Link
                 href="/booking"
-                className="inline-block mt-8 px-8 py-3 bg-brand-gold text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold"
+                className="inline-block mt-12 px-15 py-4 border-2 border-brand-gold-soft text-brand-purple tracking-wide hover:bg-[#249E94] hover:border-[#249E94] hover:text-white transition-colors font-Montserrat rounded"
               >
                 {content.hero.ctaText}
               </Link>
@@ -54,11 +56,12 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2
             id="services-heading"
-            className="font-script text-4xl md:text-5xl text-brand-gold text-center"
+            style={{ fontFamily: '"Playfair Display", serif' }}
+            className="text-4xl md:text-5xl text-brand-purple font-semibold text-center"
           >
             Services
           </h2>
-          <p className="text-center text-gray-400 text-sm tracking-wide mt-3 uppercase">
+          <p className="text-center text-brand-purple text-sm tracking-wide mt-3">
             Expert services for every stunning look you desire.
           </p>
 
@@ -68,18 +71,17 @@ export default async function Home() {
           <div
             role="tablist"
             aria-label="Service categories"
-            className="flex justify-center gap-8 mt-10 mb-12"
+            className="flex justify-center gap-15 mt-10 mb-12"
           >
             {content.serviceCategories.map((tab, i) => (
               <button
                 key={tab}
                 role="tab"
                 aria-selected={i === 0}
-                className={`text-sm font-medium pb-2 border-b-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-purple ${
-                  i === 0
-                    ? "border-brand-purple text-brand-purple"
-                    : "border-transparent text-gray-400 hover:text-gray-600"
-                }`}
+                className={`text-sm font-medium pb-2 border-b-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-purple ${i === 0
+                  ? "border-b-2 border-brand-purple text-brand-purple"
+                  : "border-b border-brand-gold-soft/70 text-brand-purple/50 hover:text-brand-purple"
+                  }`}
               >
                 {tab}
               </button>
@@ -91,8 +93,12 @@ export default async function Home() {
             {content.services.map((service) => (
               <div
                 key={service._key}
-                className="bg-brand-card/60 rounded-2xl p-5 flex flex-col items-center text-center"
+                className="bg-[#C47BE466]/80 rounded-xl p-5 flex flex-col"
               >
+                <h3 className="mb-4 font-semibold text-brand-purple">
+                  {service.name}
+                </h3>
+
                 <SanityImage
                   image={service.image}
                   alt={`${service.name} service`}
@@ -100,15 +106,15 @@ export default async function Home() {
                   height={400}
                   className="w-full rounded-xl"
                 />
-                <h3 className="mt-4 font-semibold text-gray-800">
-                  {service.name}
-                </h3>
-                <p className="text-brand-purple font-bold mt-1">
-                  {service.price}
-                </p>
-                <button className="mt-3 text-xs text-brand-purple border border-brand-purple rounded-full px-5 py-1.5 hover:bg-brand-purple hover:text-white transition-colors">
-                  view more
-                </button>
+
+                <div className="flex justify-between items-center mt-4">
+                  <p className="text-brand-purple font-bold">
+                    {service.price}
+                  </p>
+                  <button className="text-xs text-brand-purple bg-white font-semibold rounded px-5 py-2 hover:bg-brand-purple hover:text-white transition-colors">
+                    Learn More
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -118,10 +124,14 @@ export default async function Home() {
       {/* ── Book Your Look ── */}
       <section
         aria-labelledby="book-heading"
-        className="py-16 md:py-20 bg-white overflow-hidden"
+        className="py-16 md:py-20 bg-white mt-15"
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center gap-8 md:gap-16">
-          <div className="w-56 md:w-72 shrink-0 rotate-345 opacity-70" aria-hidden="true">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative flex items-center justify-center">
+          {/* Orchid — absolute so it doesn't push content */}
+          <div
+            className="hidden md:block absolute left-0 w-56 md:w-72 rotate-345 opacity-70 -translate-x-10 translate-y-30"
+            aria-hidden="true"
+          >
             <Image
               src="/images/orchid.png"
               alt=""
@@ -130,20 +140,20 @@ export default async function Home() {
               className="w-full h-auto"
             />
           </div>
-
-          <div className="text-center md:text-left flex-1">
+          <div className="text-center flex flex-col items-center">
             <h2
               id="book-heading"
-              className="font-script text-4xl md:text-5xl font-serif font-semibold text-brand-purple"
+              style={{ fontFamily: '"Playfair Display", serif' }}
+              className="text-4xl md:text-5xl font-serif font-semibold text-brand-purple"
             >
-              Book your Look
+              Book Your Look
             </h2>
             <p className="mt-4 text-brand-purple text-sm font-Montserrat tracking-wide max-w-xl">
               Schedule a consultation to get your personalized look that feels like you
             </p>
             <Link
               href="/booking"
-              className="inline-block mt-8 px-10 py-3 border-2 border-gray-800 text-gray-800 font-semibold tracking-wide hover:bg-gray-800 hover:text-white transition-colors"
+              className="inline-block mt-14 px-30 py-4 border-2 border-brand-gold-soft text-brand-purple tracking-wide hover:bg-[#249E94] hover:border-[#249E94] hover:text-white transition-colors font-Montserrat rounded"
             >
               Book Now
             </Link>
@@ -151,115 +161,10 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ── Contact ── */}
-      <section
-        id="contact"
-        aria-labelledby="contact-heading"
-        className="py-16 md:py-24 relative overflow-hidden"
-      >
-        <div
-          className="hidden md:block absolute right-0 top-1/2 -translate-y-1/3 opacity-80 pointer-events-none rotate-180"
-          aria-hidden="true"
-        >
-          <Image
-            src="/images/lily.png"
-            alt=""
-            width={500}
-            height={350}
-            className="w-[420px] h-auto"
-          />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <h2
-            id="contact-heading"
-            className="font-script text-4xl md:text-5xl text-brand-gold text-center"
-          >
-            Contact
-          </h2>
-          <p className="text-center text-gray-400 text-sm tracking-wide mt-3 uppercase mb-14">
-            Let us know your requirements and we&apos;ll get back to you.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div className="bg-brand-purple-light rounded-3xl p-12 md:p-16 flex items-center justify-center aspect-square max-w-sm mx-auto w-full">
-              <div className="bg-white rounded-2xl p-6 shadow-sm">
-                <svg
-                  className="w-16 h-16 text-brand-purple"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
-                </svg>
-              </div>
-            </div>
-
-            <form aria-label="Contact form" className="space-y-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="contact-name" className="sr-only">
-                    Name (First/Last)
-                  </label>
-                  <input
-                    id="contact-name"
-                    type="text"
-                    placeholder="Name (First/Last)"
-                    required
-                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-email" className="sr-only">
-                    Email
-                  </label>
-                  <input
-                    id="contact-email"
-                    type="email"
-                    placeholder="Email"
-                    required
-                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
-                  />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="contact-budget" className="sr-only">
-                  Total Budget
-                </label>
-                <input
-                  id="contact-budget"
-                  type="text"
-                  placeholder="Total Budget"
-                  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
-                />
-              </div>
-              <div>
-                <label htmlFor="contact-message" className="sr-only">
-                  Your Message
-                </label>
-                <textarea
-                  id="contact-message"
-                  placeholder="Your Message"
-                  rows={4}
-                  required
-                  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-brand-purple text-white font-semibold px-8 py-3 rounded-lg hover:brightness-110 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-purple"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
       {/* ── Features (purple bg) ── */}
-      <section aria-label="Additional services" className="bg-brand-purple py-16">
+      <section aria-label="Additional services" className="py-16 mt-25">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-brand-purple-dark/80 rounded-2xl p-8 text-white">
+          <div className="bg-brand-purple-dark rounded-xl p-8 text-white">
             <div className="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mb-5">
               <svg
                 className="w-6 h-6"
@@ -281,9 +186,15 @@ export default async function Home() {
               Learn professional techniques with personalized one-on-one
               sessions tailored to your skill level and style goals.
             </p>
+            <button className="text-xs text-brand-purple bg-white rounded font-semibold px-5 py-2 hover:bg-[#249E94] hover:text-white transition-colors mt-7 mr-3">
+              Book Now
+            </button>
+            <button className="text-xs text-brand-purple bg-white rounded font-semibold px-5 py-2 hover:bg-[#249E94] hover:text-white transition-colors mt-7">
+              Learn More
+            </button>
           </div>
 
-          <div className="bg-brand-purple-dark/80 rounded-2xl p-8 text-white">
+          <div className="bg-brand-purple-dark rounded-2xl p-8 text-white">
             <div className="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mb-5">
               <svg
                 className="w-6 h-6"
@@ -305,6 +216,133 @@ export default async function Home() {
               Group bookings and event makeup services for weddings, parties,
               and corporate events. We bring the studio to you.
             </p>
+            <button className="text-xs text-brand-purple bg-white rounded font-semibold px-5 py-2 hover:bg-[#249E94] hover:text-white transition-colors mt-7 mr-3">
+              Book Now
+            </button>
+            <button className="text-xs text-brand-purple bg-white rounded font-semibold px-5 py-2 hover:bg-[#249E94] hover:text-white transition-colors mt-7">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Contact ── */}
+      <section
+        id="contact"
+        aria-labelledby="contact-heading"
+        className="py-16 md:py-24 relative"
+      >
+        <div
+          className="hidden md:block absolute right-0 top-1/2 translate-y-60 opacity-80 pointer-events-none rotate-180"
+          aria-hidden="true"
+        >
+          <Image
+            src="/images/lily.png"
+            alt=""
+            width={500}
+            height={350}
+            className="w-[420px] h-auto"
+          />
+        </div>
+
+        <h2
+          id="contact-heading"
+          style={{ fontFamily: '"Playfair Display", serif' }}
+          className="text-4xl md:text-5xl font-semibold text-brand-purple text-center pb-25 mt-20"
+        >
+          Contact
+        </h2>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <form aria-label="Contact form" className="space-y-6">
+              {/* Name */}
+              <div>
+                <p className="font-bold text-brand-purple-dark mb-8">Name (Required)</p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="contact-firstname" className="text-sm text-brand-purple-dark block mb-1">
+                      First Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="contact-firstname"
+                      type="text"
+                      required
+                      className="w-full border-b border-gray-300 py-2 text-sm focus:outline-none focus:border-brand-purple transition-colors bg-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-lastname" className="text-sm text-brand-purple-dark block mb-1">
+                      Last Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="contact-lastname"
+                      type="text"
+                      required
+                      className="w-full border-b border-gray-300 py-2 text-sm focus:outline-none focus:border-brand-purple transition-colors bg-transparent"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Service */}
+              <div>
+                <label htmlFor="contact-service" className="text-sm text-brand-purple-dark block mb-1">
+                  Service <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="contact-service"
+                  type="text"
+                  required
+                  className="w-full border-b border-gray-300 py-2 text-sm focus:outline-none focus:border-brand-purple transition-colors bg-transparent"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label htmlFor="contact-email" className="text-sm text-brand-purple-dark block mb-1">
+                  Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  required
+                  className="w-full border-b border-gray-300 py-2 text-sm focus:outline-none focus:border-brand-purple transition-colors bg-transparent"
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <label htmlFor="contact-message" className="text-brand-purple-dark text-sm font-medium block mb-1">
+                  Message <span className="text-brand-purple-dark font-normal">(Optional)</span>
+                </label>
+                <p className="text-gray-400 text-xs mb-2">Feel free to attach inspiration images or share any additional look!</p>
+                <textarea
+                  id="contact-message"
+                  rows={5}
+                  className="w-full bg-gray-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/30 transition-colors resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="bg-brand-purple-dark text-white font-semibold px-8 py-3 rounded-lg hover:brightness-110 transition-all"
+              >
+                Book a Consultation
+              </button>
+            </form>
+
+            <div className="bg-brand-purple-light rounded-3xl p-12 md:p-16 flex items-center justify-center aspect-square max-w-sm mx-auto w-full">
+              <div className="bg-white rounded-2xl p-6 shadow-sm">
+                <svg
+                  className="w-20 h-16 text-brand-purple"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -312,12 +350,13 @@ export default async function Home() {
       {/* ── Testimonials ── */}
       <section
         aria-labelledby="testimonials-heading"
-        className="py-16 md:py-24"
+        className="py-16 md:py-24 mt-20 mb-30"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2
             id="testimonials-heading"
-            className="text-2xl md:text-3xl font-bold text-center"
+            style={{ fontFamily: '"Playfair Display", serif' }}
+            className="text-4xl md:text-3xl text-brand-purple text-center font-semibold mb-20"
           >
             Trusted By Many Satisfied Customers
           </h2>
@@ -325,7 +364,7 @@ export default async function Home() {
             {content.testimonials.map((t) => (
               <div
                 key={t._key}
-                className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-[#C47BE466]/80 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <SanityImage
@@ -335,9 +374,13 @@ export default async function Home() {
                     height={40}
                     className="w-10 h-10 rounded-full shrink-0"
                   />
-                  <span className="font-semibold text-sm">{t.name}</span>
+                  <span
+                    className="font-semibold text-brand-purple font-Montserrat"
+                    style={{ fontFamily: '"Playfair Display", serif' }}>
+                    {t.name}
+                  </span>
                 </div>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-brand-purple leading-relaxed font-Montserrat">
                   {t.text}
                 </p>
               </div>
