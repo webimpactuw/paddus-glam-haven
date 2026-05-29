@@ -5,6 +5,7 @@ import { getHomeContent } from "@/lib/content";
 import OurWork from "@/components/OurWork";
 import Testimonials from "@/components/Testimonials";
 import ServiceCards from "@/components/ServiceCards";
+import ContactForm from "@/components/ContactForm";
 
 export default async function Home() {
   const content = await getHomeContent();
@@ -183,71 +184,7 @@ export default async function Home() {
           Contact
         </h2>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <form aria-label="Contact form" className="space-y-6 max-w-lg mx-auto px-4 md:px-0">
-            {/* Name */}
-            <div>
-              <p className="font-bold text-brand-purple-dark mb-8">Name (Required)</p>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="contact-firstname" className="text-sm text-brand-purple-dark block mb-1">
-                    First Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="contact-firstname"
-                    type="text"
-                    required
-                    className="w-full border-b border-gray-300 py-2 text-sm focus:outline-none focus:border-brand-purple transition-colors bg-transparent"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-lastname" className="text-sm text-brand-purple-dark block mb-1">
-                    Last Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="contact-lastname"
-                    type="text"
-                    required
-                    className="w-full border-b border-gray-300 py-2 text-sm focus:outline-none focus:border-brand-purple transition-colors bg-transparent"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Email */}
-            <div className="mt-13">
-              <label htmlFor="contact-email" className="text-sm text-brand-purple-dark block mb-1">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="contact-email"
-                type="email"
-                required
-                className="w-full border-b border-gray-300 py-2 text-sm focus:outline-none focus:border-brand-purple transition-colors bg-transparent"
-              />
-            </div>
-
-            {/* Message */}
-            <div className="mt-13">
-              <label htmlFor="contact-message" className="text-brand-purple-dark text-sm font-medium block mb-1">
-                Message
-              </label>
-              <p className="text-gray-400 text-xs mb-2">Reach out for any questions or concerns.</p>
-              <textarea
-                id="contact-message"
-                rows={5}
-                className="w-full bg-[#E6F4F2] mt-4 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/30 transition-colors resize-none"
-              />
-            </div>
-
-            <div className="flex justify-center md:justify-start">
-              <button
-                type="submit"
-                className="bg-brand-purple-dark text-white font-semibold px-15 py-2 rounded-lg hover:brightness-110 transition-all"
-              >
-                Contact
-              </button>
-            </div>
-          </form>
+          <ContactForm />
         </div>
       </section>
 
