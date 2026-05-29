@@ -10,6 +10,7 @@ export default function BookingPage() {
     <main className="min-h-[70vh] py-16 md:py-24">
       <section className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
         <h1 className="font-script text-5xl md:text-6xl text-brand-gold">
+          
           Booking
         </h1>
         <p className="mt-4 text-gray-500">
