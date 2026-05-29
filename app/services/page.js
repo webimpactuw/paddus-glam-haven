@@ -108,7 +108,7 @@ export default function ServicesPage() {
       <section
         id="contact"
         aria-labelledby="contact-heading"
-        className="pt-10 md:pt-14 pb-14 md:pb-24 relative"
+        className="pt-10 md:pt-1 pb-14 md:pb-24 relative"
       >
         {/* Desktop Flower */}
         <div
@@ -145,11 +145,13 @@ export default function ServicesPage() {
             style={{ fontFamily: '"Playfair Display", serif' }}
             className="text-4xl md:text-5xl font-semibold text-brand-purple"
           >
-            Contact
+            Have questions? Contact us now!
           </h2>
 
-          <p className="mt-3 text-base md:text-xl text-brand-purple-light/60 tracking-wide">
-            Reach out today!
+          <p 
+           style={{ fontFamily: '"Playfair Display", serif' }}
+          className="mt-3 text-base md:text-xl text-brand-purple-light/60 tracking-wide">
+            Reach out today for a consulting appointment!
           </p>
         </div>
 
