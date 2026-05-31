@@ -4,9 +4,16 @@ import SanityImage from "@/components/SanityImage";
 import { getHomeContent } from "@/lib/content";
 import { client } from "@/sanity/lib/client";
 import ServicePostObj from "@/components/ServicePost";
+import imageUrlBuilder from '@sanity/image-url';
+
+const builder = imageUrlBuilder(client);
+
+function urlFor(source) {
+  return builder.image(source);
+}
 
 async function getServiceObj() {
-  const query = `*[_type == "service"] {
+  const query = `*[_type == "serviceCard"] {
     serviceName,
     price,
     image,
@@ -18,9 +25,21 @@ async function getServiceObj() {
   return services;
 }
 
+async function getHomeImageObj() {
+    const query = `*[_type == "homeImageOne"] {
+      Title,
+      image
+    }`;
+
+    const images = await client.fetch(query);
+    console.log("images: ", images)
+    return images
+  }
+
 export default async function Home() {
   const content = await getHomeContent();
   const services = await getServiceObj();
+  const homeImage = await getHomeImageObj();
 
   return (
     <main>
@@ -49,13 +68,20 @@ export default async function Home() {
                 {content.hero.ctaText}
               </Link>
             </div>
-            <SanityImage
-              image={content.hero.image}
+            {/*<SanityImage
+              image={homeImage[0].image}
               alt="Prerna applying makeup to a client"
               width={480}
               height={600}
               className="w-full max-w-md mx-auto md:mx-0 md:ml-auto rounded-2xl"
               priority
+            />*/}
+            <Image
+              src={urlFor(homeImage[0].image).auto("format").size(1920, 1080).url()}
+              width={400}
+              height={400}
+              alt={homeImage[0].Title}
+              className="w-full rounded-xl"
             />
           </div>
         </div>
@@ -127,9 +153,9 @@ export default async function Home() {
                 </button>
               </div>
             ))}*/}
-            {services.map((service) => (
+            {/*services.map((service) => (
               <ServicePostObj key={service.key} ServiceCard={service}/>
-            ))}
+            ))*/}
           </div>
           
         </div>
