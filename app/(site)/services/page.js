@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { client } from "@/sanity/lib/client";
+import imageUrlBuilder from '@sanity/image-url';
 
 const services = [
   { name: "Group Performance" },
@@ -10,7 +12,35 @@ const services = [
   { name: "Wedding" },
 ];
 
-export default function ServicesPage() {
+const builder = imageUrlBuilder(client);
+
+function urlFor(source) {
+  return builder.image(source);
+}
+
+async function getServices() {
+  const query = `*[_type == "service"] {
+    name,
+    image
+  }`
+
+  const services = await client.fetch(query);
+  return services
+}
+
+async function getPricing() {
+    const query = `*[_type == "serviceImages"] {
+      pricing,
+      bundle
+    }`
+  
+    const prices = await client.fetch(query)
+    return prices
+}
+
+export default async function ServicesPage() {
+  const test = await getServices()
+  const prices = await getPricing()
   return (
     <main className="relative overflow-hidden">
       {/* Background Flower */}
@@ -38,20 +68,19 @@ export default function ServicesPage() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-14 md:mt-16">
-          {services.map((service) => (
+          {test.map((service) => (
             <div
               key={service.name}
-              className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#F5F5F5] border border-gray-200"
+              className="relative rounded-2xl overflow-hidden aspect-[4/3] border-gray-200"
             >
               {/* Placeholder */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
-                <div className="w-16 h-16 border-2 border-gray-300 rounded-xl flex items-center justify-center">
-                  <span className="text-3xl">📷</span>
-                </div>
-
-                <p className="text-sm tracking-wide uppercase mt-3">
-                  Image Placeholder
-                </p>
+                <Image
+                src={urlFor(service.image).auto("format").size(1920, 1080).url()}
+                width={1000}
+                height={1}
+                className=""
+                ></Image>
               </div>
 
               {/* Overlay */}
@@ -81,25 +110,21 @@ export default function ServicesPage() {
         <div className="flex flex-col gap-6 mt-16 md:mt-20">
           
           {/* Service Pricing */}
-          <div className="w-full aspect-[3/4] rounded-2xl border border-gray-200 bg-[#F5F5F5] flex flex-col items-center justify-center text-gray-400">
-            <div className="w-16 h-16 border-2 border-gray-300 rounded-xl flex items-center justify-center">
-              <span className="text-3xl">📷</span>
-            </div>
-
-            <p className="text-sm tracking-wide uppercase mt-4">
-              Service Pricing Image
-            </p>
+          <div className="w-full aspect-[3/4] rounded-2x flex flex-col items-center justify-center text-gray-400">
+            <Image
+              src={urlFor(prices[0].pricing).auto("format").size(1920, 1080).url()}
+              width={1000}
+              height={1}
+              className=""></Image>
           </div>
 
           {/* Bundle Pricing */}
-          <div className="w-full aspect-[3/4] rounded-2xl border border-gray-200 bg-[#F5F5F5] flex flex-col items-center justify-center text-gray-400">
-            <div className="w-16 h-16 border-2 border-gray-300 rounded-xl flex items-center justify-center">
-              <span className="text-3xl">📷</span>
-            </div>
-
-            <p className="text-sm tracking-wide uppercase mt-4">
-              Bundle Pricing Image
-            </p>
+          <div className="w-full aspect-[3/4] rounded-2xl flex flex-col items-center justify-center text-gray-400">
+            <Image
+              src={urlFor(prices[0].bundle).auto("format").size(1920, 1080).url()}
+              width={1000}
+              height={1}
+              className=""></Image>
           </div>
         </div>
       </div>

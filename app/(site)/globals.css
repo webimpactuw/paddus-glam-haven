@@ -10,6 +10,8 @@
   --color-brand-gold-soft: #E3BC6A;
   --color-brand-yellow-soft: #FFF19B;
   --color-brand-card: #D7C5D2;
+  --color-brand-green: #249E94;
+  --color-brand-green-faint: #249E941A;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-script: var(--font-great-vibes);
@@ -38,4 +40,18 @@ body {
 
 .skip-link:focus {
   left: 0;
+}
+
+.selected {
+  background-color: var(--color-brand-green);
+  color: white;
+}
+
+.unselected {
+  background-color: white;
+  color: var(--color-brand-purple);
+}
+
+:hover.unselected {
+  background-color: rgb(from var(--color-brand-green) r g b / 0.1)
 }

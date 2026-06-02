@@ -6,9 +6,28 @@ import OurWork from "@/components/OurWork";
 import Testimonials from "@/components/Testimonials";
 import ServiceCards from "@/components/ServiceCards";
 import ContactForm from "@/components/ContactForm";
+import { client } from "@/sanity/lib/client";
+import imageUrlBuilder from '@sanity/image-url';
+
+const builder = imageUrlBuilder(client);
+
+function urlFor(source) {
+  return builder.image(source);
+}
+
+async function getHomeImageObj() {
+  const query = `*[_type == "portrait"] {
+    homePortrait,
+    aboutPortrait
+  }`;
+
+  const images = await client.fetch(query);
+  return images
+}
 
 export default async function Home() {
   const content = await getHomeContent();
+  const homeImage = await getHomeImageObj();
 
   return (
     <main>
@@ -76,18 +95,13 @@ export default async function Home() {
                 {content.hero.ctaText}
               </Link>
             </div>
-
-            {/* Desktop image only */}
-            <div className="hidden md:flex justify-end">
-              <SanityImage
-                image={content.hero.image}
-                alt="Prerna applying makeup to a client"
-                width={480}
-                height={600}
-                className="w-full max-w-md rounded-2xl"
-                priority
-              />
-            </div>
+            <Image
+              src={urlFor(homeImage[0].homePortrait).auto("format").size(1920, 1080).url()}
+              width={400}
+              height={400}
+              alt="Home Portrait"
+              className="w-full rounded-xl"
+            />
           </div>
         </div>
       </section>
@@ -109,7 +123,6 @@ export default async function Home() {
           <p className="text-center text-brand-purple text-sm tracking-wide mt-5">
             A look at recent bridal, performance, and editorial work.
           </p>
-
           <OurWork />
         </div>
       </section>
