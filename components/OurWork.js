@@ -1,9 +1,20 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import SanityImage from "@/components/SanityImage";
+import imageUrlBuilder from '@sanity/image-url';
+import { client } from "@/sanity/lib/client";
 
-const categories = [
+const builder = imageUrlBuilder(client);
+
+function urlFor(source) {
+  return builder.image(source);
+}
+
+export default function ServiceTabs() {
+
+  const [categories, setCategories] = useState([
   {
     id: "featured",
     title: "Featured",
@@ -44,9 +55,69 @@ const categories = [
       { id: 4, alt: "Photo Shoots 4" },
     ],
   },
-];
+]);
 
-export default function ServiceTabs() {
+async function getContent() {
+  let temp = structuredClone(categories)
+
+  let query = `*[_type == "homeFeatured"] {
+    one,
+    two,
+    three,
+    four
+  }`;
+
+  let images = await client.fetch(query);
+  temp[0].images[0].src = images[0].one
+  temp[0].images[1].src = images[0].two
+  temp[0].images[2].src = images[0].three
+  temp[0].images[3].src = images[0].four
+  
+  query = `*[_type == "homePerformance"] {
+    one,
+    two,
+    three,
+    four
+  }`;
+
+  images = await client.fetch(query);
+  temp[1].images[0].src = images[0].one
+  temp[1].images[1].src = images[0].two
+  temp[1].images[2].src = images[0].three
+  temp[1].images[3].src = images[0].four
+
+  query = `*[_type == "homeProm"] {
+    one,
+    two,
+    three,
+    four
+  }`;
+
+  images = await client.fetch(query);
+  temp[2].images[0].src = images[0].one
+  temp[2].images[1].src = images[0].two
+  temp[2].images[2].src = images[0].three
+  temp[2].images[3].src = images[0].four
+
+  query = `*[_type == "homePhotoShoot"] {
+    one,
+    two,
+    three,
+    four
+  }`;
+
+  images = await client.fetch(query);
+  temp[3].images[0].src = images[0].one
+  temp[3].images[1].src = images[0].two
+  temp[3].images[2].src = images[0].three
+  temp[3].images[3].src = images[0].four
+
+  console.log(temp)
+  setCategories(temp)
+}
+
+  useEffect(() => {getContent(categories)}, [])
+
   const [activeTab, setActiveTab] = useState(0);
   const [activeScroll, setActiveScroll] = useState(0);
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
@@ -137,23 +208,26 @@ export default function ServiceTabs() {
           className="flex gap-3 overflow-x-auto mt-6 snap-x snap-mandatory scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {activeCategory.images.map((image) => (
-            <div
+        {activeCategory.images.map((image) => {
+          if (!image.src) {return null}
+          else {
+            return (<div
               key={image.id}
               className="relative flex-none w-[67vw] aspect-[336/234] overflow-hidden rounded-lg snap-start"
             >
-              <SanityImage
+              <Image
+                src={urlFor(image.src).auto("format").size(1920, 1080).url()}
                 alt={image.alt}
-                width={336}
-                height={234}
+                width={10000}
+                height={1}
                 className="w-full h-full object-cover"
               />
               <div
                 className="absolute inset-0"
                 style={{ backgroundColor: "#C47BE4", opacity: 0.4 }}
               />
-            </div>
-          ))}
+            </div>)}
+          })}
         </div>
 
         {/* Dot indicator */}
@@ -210,20 +284,23 @@ export default function ServiceTabs() {
         </div>
 
         <div className="grid grid-cols-2 gap-2 w-full max-w-6xl mx-auto aspect-[672/469]">
-          {activeCategory.images.map((image) => (
-            <div key={image.id} className="relative overflow-hidden">
-              <SanityImage
+          {activeCategory.images.map((image) => {
+            if (!image.src) {return null}
+            else {
+            return (<div key={image.id} className="relative overflow-hidden">
+              <Image
+                src={urlFor(image.src).auto("format").size(1920, 1020).url()}
                 alt={image.alt}
-                width={336}
-                height={234}
+                width={10000}
+                height={1}
                 className="w-full h-full object-cover"
               />
               <div
                 className="absolute inset-0"
                 style={{ backgroundColor: "#C47BE4", opacity: 0.4 }}
               />
-            </div>
-          ))}
+            </div>)}
+          })}
         </div>
       </div>
     </>

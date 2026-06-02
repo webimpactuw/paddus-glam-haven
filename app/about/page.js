@@ -2,9 +2,28 @@ import Link from "next/link";
 import Image from "next/image";
 import SanityImage from "@/components/SanityImage";
 import { getAboutContent } from "@/lib/content";
+import { client } from "@/sanity/lib/client";
+import imageUrlBuilder from '@sanity/image-url';
+
+const builder = imageUrlBuilder(client);
+
+function urlFor(source) {
+  return builder.image(source);
+}
+
+async function getPortrait() {
+  const query = `*[_type == "portrait"] {
+    homePortrait,
+    aboutPortrait
+  }`;
+
+  const images = await client.fetch(query);
+  return images
+}
 
 export default async function About() {
   const content = await getAboutContent();
+  const portrait = await getPortrait();
 
   return (
     <main className="relative overflow-hidden">
@@ -62,9 +81,9 @@ export default async function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
 
           {/* Desktop Image */}
-          <div className="hidden md:block border-[3px] border-brand-purple-dark rounded-md p-2 max-w-sm mx-auto md:mx-0 w-full">
-            <SanityImage
-              image={content.portrait}
+          <div className="hidden md:block border-[3px] border-brand-purple-dark rounded-md p-2 max-w-sm mx-auto md:mx-0 w-full z-1">
+            <Image
+              src={urlFor(portrait[0].aboutPortrait).auto("format").size(1920, 1080).url()}
               alt="Portrait of Prerna, makeup artist"
               width={400}
               height={400}
@@ -83,8 +102,8 @@ export default async function About() {
 
             {/* Mobile Image */}
             <div className="md:hidden mt-6 border-[3px] border-brand-purple-dark rounded-md p-2 w-[220px] h-[250px] mx-auto overflow-hidden">
-              <SanityImage
-                image={content.portrait}
+              <Image
+                src={urlFor(portrait[0].aboutPortrait).auto("format").size(1920, 1080).url()}
                 alt="Portrait of Prerna, makeup artist"
                 width={400}
                 height={400}

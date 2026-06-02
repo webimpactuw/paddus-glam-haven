@@ -1,7 +1,13 @@
 'use client'
 
+import Image from "next/image"
+import { useState, useEffect } from "react"
+import { client } from "@/sanity/lib/client"
+
 export default function Serviceselector({className="", onValueChange}) {
     let toggle = 0
+    const [services, setServices] = useState([null])
+
     function openmenu() {
         let e = document.getElementById("y")
         if (toggle == 0) {
@@ -14,6 +20,16 @@ export default function Serviceselector({className="", onValueChange}) {
         }
     }
 
+    async function updateServices() {
+        const query = `*[_type=="service"] {
+            name,
+            image
+        }`
+
+        const result = await client.fetch(query)
+        setServices(result)
+    }
+
     function selection(val) {
         let e = document.getElementById("x")
         let f = document.getElementById("y")
@@ -23,15 +39,24 @@ export default function Serviceselector({className="", onValueChange}) {
         onValueChange(val)
     }
 
+    useEffect(() => {updateServices()}, [])
+
     return <div className={`${className}`}>
-        <button id="x" onClick={openmenu} type="button" className="text-brand-purple-dark border border-brand-gold-soft w-full mb-[1vh] rounded h-[5vh]">Select</button>
+        <button onClick={openmenu} type="button" className="text-brand-purple-dark border border-brand-gold-soft w-full mb-[1vh] rounded h-[5vh] flex justify-start items-center">
+            <p id="x" className="w-full">Select</p>
+            <Image src="/chevron.svg" height={15} width={15} alt="dropdown" className="ml-[-1.5vw]"></Image>
+        </button>
         <div id="y" className="flex flex-col border-brand-gold-soft border hidden text-brand-purple rounded bg-white absolute w-[50vw]">
-            <button onClick={() => selection(1)} type="button" className="hover:bg-brand-green/10">1</button>
-            <button onClick={() => selection(2)} type="button" className="hover:bg-brand-green/10">2</button>
-            <button onClick={() => selection(3)} type="button" className="hover:bg-brand-green/10">3</button>
-            <button onClick={() => selection(4)} type="button" className="hover:bg-brand-green/10">4</button>
-            <button onClick={() => selection(5)} type="button" className="hover:bg-brand-green/10">5</button>
-            <button onClick={() => selection(6)} type="button" className="hover:bg-brand-green/10">6</button>
+            {services.map((service) => {
+                if (service === null) {
+                    return null
+                }
+                else {
+                    return (
+                        <button key={service.name} onClick={() => selection(service.name)} type="button" className="hover:bg-brand-green/10">{service.name}</button>
+                    )
+                }
+            })}
         </div>
     </div>
 }

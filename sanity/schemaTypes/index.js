@@ -1,6 +1,12 @@
-import serviceCard from "./documents/service"
-import homeImageOne from "./documents/homeimage1"
+import portrait from "./documents/portrait";
+import homeFeatured from "./documents/homeFeatured";
+import homePerformance from "./documents/homePerformance";
+import homePhotoShoot from "./documents/homePhotoShoot";
+import homeProm from "./documents/homeProm";
+import service from "./documents/service";
+import serviceImages from "./documents/serviceImages";
+import appointment from "./documents/appointment";
 
 export const schema = {
-  types: [serviceCard, homeImageOne],
+  types: [portrait, homeFeatured, homePerformance, homePhotoShoot, homeProm, service, serviceImages, appointment],
 }
