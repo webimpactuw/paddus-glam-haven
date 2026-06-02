@@ -1,15 +1,12 @@
 export default {
-    name: "portrait",
-    title: "Portraits",
+    name: "servicecards",
+    title: "Service Cards",
     type: "document",
     fields: [
         {
-            name: "homePortrait",
-            title: "Home Portrait",
+            name: "OneonOne",
+            title: "One on One Image",
             type: "image",
-            options: {
-                hotspot: true,
-            },
             options: {
                 accept: '.svg'
             },
@@ -25,12 +22,9 @@ export default {
             })
         },
         {
-            name: "aboutPortrait",
-            title: "About Us Portrait",
+            name: "group",
+            title: "Group Tutorial Image",
             type: "image",
-            options: {
-                hotspot: true,
-            },
             options: {
                 accept: '.svg'
             },
@@ -45,5 +39,5 @@ export default {
                 return isSvg ? true : 'Only SVG files are allowed.';
             })
         }
-    ]
+    ],
 }

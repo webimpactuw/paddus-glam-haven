@@ -2,8 +2,18 @@
 
 import { useState, useEffect, useRef } from "react";
 import SanityImage from "@/components/SanityImage";
+import { client } from "@/sanity/lib/client";
+import Image from "next/image";
+import imageUrlBuilder from '@sanity/image-url';
 
-const placeholderCards = [
+const builder = imageUrlBuilder(client);
+
+function urlFor(source) {
+  return builder.image(source);
+}
+
+export default function ServiceCards({ cards }) {
+const [placeholderCards, setPlaceHolferCards] = useState([
   {
     _key: "1",
     title: "1 on 1 Makeup Lessons",
@@ -16,9 +26,22 @@ const placeholderCards = [
     description: "Description",
     image: null,
   },
-];
+]);
 
-export default function ServiceCards({ cards }) {
+  async function UpdateServiceCard() {
+    let temp = structuredClone(placeholderCards)
+    const query = `*[_type == "servicecards"] {
+    OneonOne,
+    group
+    }`
+
+    const result = await client.fetch(query)
+    temp[0].image = result[0].OneonOne
+    temp[1].image = result[0].group
+
+    setPlaceHolferCards(temp)
+  }
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [peekOffset, setPeekOffset] = useState(7.5);
   const scrollRef = useRef(null);
@@ -38,6 +61,8 @@ export default function ServiceCards({ cards }) {
     window.addEventListener("resize", updatePeek);
     return () => window.removeEventListener("resize", updatePeek);
   }, []);
+
+  useEffect(() => {console.log("executing"); UpdateServiceCard()}, [])
 
   // Track scroll position for dots on mobile
   useEffect(() => {
@@ -65,13 +90,17 @@ export default function ServiceCards({ cards }) {
         className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 px-4"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        {data.map((card) => (
-          <div
+        {data.map((card) => {
+          if (card.image === null) {
+            return null
+          }
+          else {
+          return <div
             key={card._key}
             className="relative flex-none w-[85vw] overflow-hidden rounded-2xl aspect-[16/9] snap-start"
           >
-            <SanityImage
-              image={card.image}
+            <Image
+              src={urlFor(card.image).auto("format").size(1920, 1080).url()}
               alt={card.title}
               width={0}
               height={0}
@@ -104,7 +133,7 @@ export default function ServiceCards({ cards }) {
               </div>
             </div>
           </div>
-        ))}
+        }})}
       </div>
 
       {/* Desktop: sliding carousel */}
@@ -113,13 +142,18 @@ export default function ServiceCards({ cards }) {
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(calc(-${activeIndex * 90}% + ${activeIndex > 0 ? `${peekOffset}%` : '0%'}))` }}
         >
-          {data.map((card) => (
-            <div
+          {data.map((card) => {
+            if (card.image === null | !card.image) {
+              console.log("image is null: ", card.image)
+              return null
+            }
+            else {
+            return <div
               key={card._key}
               className="relative flex-none w-[85%] mx-[2.5%] overflow-hidden rounded-2xl aspect-[16/9]"
             >
-              <SanityImage
-                image={card.image}
+              <Image
+                src={urlFor(card.image).auto("format").size(1920, 1080).url()}
                 alt={card.title}
                 width={0}
                 height={0}
@@ -152,7 +186,7 @@ export default function ServiceCards({ cards }) {
                 </div>
               </div>
             </div>
-          ))}
+          }})}
         </div>
       </div>
 

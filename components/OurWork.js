@@ -111,8 +111,7 @@ async function getContent() {
   temp[3].images[1].src = images[0].two
   temp[3].images[2].src = images[0].three
   temp[3].images[3].src = images[0].four
-
-  console.log(temp)
+  
   setCategories(temp)
 }
 

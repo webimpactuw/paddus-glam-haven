@@ -6,7 +6,8 @@ import homeProm from "./documents/homeProm";
 import service from "./documents/service";
 import serviceImages from "./documents/serviceImages";
 import appointment from "./documents/appointment";
+import servicecards from "./documents/servicecards";
 
 export const schema = {
-  types: [portrait, homeFeatured, homePerformance, homePhotoShoot, homeProm, service, serviceImages, appointment],
+  types: [portrait, homeFeatured, homePerformance, homePhotoShoot, homeProm, service, serviceImages, appointment, servicecards],
 }

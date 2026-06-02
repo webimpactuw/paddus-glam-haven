@@ -99,7 +99,7 @@ export default async function Home() {
               src={urlFor(homeImage[0].homePortrait).auto("format").size(1920, 1080).url()}
               width={400}
               height={400}
-              alt={homeImage[0].Title}
+              alt="Home Portrait"
               className="w-full rounded-xl"
             />
           </div>
